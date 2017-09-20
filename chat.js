@@ -42,6 +42,12 @@ io.sockets.on('connection', function(socket){
         io.emit('notificarUsuario',datos);
     });
 
+    /* SOCKET MYHOUSE */
+
+    socket.on('enviarMensaje', function(datos) {
+       io.emit('mensajeUsuario',datos); 
+    });
+
 });
 
 http.listen(PORT,function(){
