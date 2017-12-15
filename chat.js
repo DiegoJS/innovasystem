@@ -43,6 +43,10 @@ io.sockets.on('connection', function(socket){
     });
 
     /* SOCKET MYHOUSE */
+    
+    socket.on('pruebadingo', function(datos){
+        io.emit('pruebadingob',datos);
+    })
 
     socket.on('enviarMensaje', function(datos) {
        io.emit('mensajeUsuario',datos); 
