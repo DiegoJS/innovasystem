@@ -14,15 +14,21 @@ app.get('/',function(req,res){
 
 io.sockets.on('connection', function(socket){
     socket.on('login', function(data) {
-        console.log('a user ' + data.userId + ' connected');
-        users.push(data.userId);
-        ident.push(socket.id);
+        //    console.log('a user ' + data.userId + ' connected');
+        if (users.indexOf(data.userId) !== -1)
+        {
+            //    console.log('Usuario conectado');
+        } else {
+            users.push(data.userId);
+            ident.push(socket.id);
+        }
+
         io.emit('login', users, data.userId);
     });
 
     socket.on('disconnect', function(){
         var id = ident.indexOf(socket.id);
-        console.log(id + ' | user ' + users[id] + ' disconnected');
+        //    console.log(id + ' | user ' + users[id] + ' disconnected');
         if (id >= 0) {
             users.splice(id, 1);
             ident.splice(id, 1); 
