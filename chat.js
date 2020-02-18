@@ -10,11 +10,14 @@ app.get('/',function(req,res)
 {
     // request : son cabeceras y datos que nos envia el navegador.
     // response : son todo lo que enviamos desde el servidor.
-    res.sendFile(__dirname + '/index.html');
+    //res.sendFile(__dirname + '/index.html');
+    res.status(200).send("<p> Usuarios" + JSON.stringify(users) + "</p>");
 });
 
 io.sockets.on('connection', function(socket)
 {
+    socket.emit('new_client', []);
+
     socket.on('login', function(data)
     {
         // console.log('a user ' + data.userId + ' connected');
