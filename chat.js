@@ -16,7 +16,7 @@ app.get('/',function(req,res)
 
 io.sockets.on('connection', function(socket)
 {
-    socket.emit('new_client', []);
+    io.emit('new_client', []);
 
     socket.on('login', function(data)
     {
