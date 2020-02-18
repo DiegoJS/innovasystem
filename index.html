@@ -21,7 +21,16 @@
 <body>
 	<p>SERVIDOR INICIADO...</p>
 	<script type="text/javascript">
-		console.log('ready');
+		var socket = io('https://innovahorasys.herokuapp.com/');
+		socket.on('new_client', function(data) {
+		    console.log('nueva conexión...');
+		});
+		socket.on('login', function(data) {
+		    console.log('conectados:', data);
+		});
+		socket.on('disconnect', function(data) {
+		    console.log('desconectados: ', data);
+		});
 	</script>
 </body>
 </html>
