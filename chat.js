@@ -35,9 +35,10 @@ io.sockets.on('connection', function(socket)
     {
         var id = ident.indexOf(socket.id);
         // console.log(id + ' | user ' + users[id] + ' disconnected');
-        users.splice(id, 1);
-        ident.splice(id, 1);
-
+        if (id >= 0) {
+            users.splice(id, 1);
+            ident.splice(id, 1);
+        }
         io.emit('disconnect', users);
     });
 
