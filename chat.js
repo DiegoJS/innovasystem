@@ -62,6 +62,11 @@ io.sockets.on('connection', function(socket)
        io.emit('mensajeUsuario',datos); 
     });
 
+    socket.on('new_publication', function(datos)
+    {
+        io.emit('publication_received', datos);
+    });
+
 });
 
 http.listen(PORT,function(){
