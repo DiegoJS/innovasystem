@@ -20,7 +20,6 @@ io.sockets.on('connection', function(socket)
 
     socket.on('login', function(data)
     {
-        console.log('a user ' + data.userId + ' connected');
         if (users.indexOf(data.userId) !== -1)
         {
             // console.log('data');
@@ -69,7 +68,6 @@ io.sockets.on('connection', function(socket)
 
     socket.on('publication_like', function(datos)
     {
-        console.log(datos);
         io.emit('publication_like', datos);
     });
 
